@@ -14,6 +14,7 @@
                                 <th>Usuario</th>
                                 <th>Tipo</th>
                                 <th>Eliminar</th>
+                                <th>Reiniciar Passsword</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -24,6 +25,7 @@
                                 <td><?php echo $user->user; ?></td>
                                 <td><?php echo $user->tipo; ?></td>
                                 <td><a <?php if($user->id_user != '1' ){ ?> href="<?php echo base_url(); ?>internal_private/delete_usuario/<?php echo $user->id_user; ?>" <?php } ?> class="btn btn-danger" role="button">Eliminar</a></td>
+                                <td><a <?php if($user->id_user != '1' ){ ?> href="<?php echo base_url(); ?>internal_private/reset_pass_user/<?php echo $user->id_user; ?>" <?php } ?> class="btn btn-warning" role="button">Reiniciar</a></td>
                             </tr>
                             <?php } }else{ ?>
                             <tr>
@@ -32,6 +34,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <th></th>
                             </tr>
                             <?php } ?>
                         </tbody>

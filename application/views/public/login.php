@@ -12,7 +12,7 @@
                 <div class="control-group">
                     <div class="form-group floating-label-form-group controls">
                         <label>Contraseña</label>
-                        <input type="password" class="form-control" name="passs" placeholder="Contraseña" id="email" maxlength="10" required data-validation-required-message="Ingresa la contraseña.">
+                        <input type="password" class="form-control" name="passs" placeholder="Contraseña" id="email" required data-validation-required-message="Ingresa la contraseña.">
                         <p class="help-block text-danger"></p>
                     </div>
                 </div>
@@ -22,6 +22,7 @@
                         <select class="form-control" name="tipo" placeholder="Tipo" id="tipo" required>
                             <option value="Admin">Administrador</option>
                             <option value="Alumno">Alumno</option>
+                            <option value="Empresa">Empresa</option>
                         </select>
                         <p class="help-block text-danger"></p>
                     </div>

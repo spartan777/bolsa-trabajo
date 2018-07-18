@@ -51,6 +51,9 @@
             <li class="nav-item">
               <a class="nav-link" href="<?php echo base_url(); ?>welcome/postulaciones">Mis Postulaciones</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo base_url(); ?>welcome/mi_informacion">Mi Información</a>
+            </li>
             <?php } 
             if($this->session->userdata('logueado') === TRUE) { ?>
             <li class="nav-item">

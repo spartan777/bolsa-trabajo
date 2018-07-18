@@ -2,7 +2,7 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <a href="<?php echo base_url(); ?>internal_private/agregar_oferta" class="btn btn-info" role="button">Agregar</a>
+                <a href="<?php echo base_url(); ?>internal_empresa/agregar_oferta" class="btn btn-info" role="button">Agregar</a>
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
@@ -26,8 +26,8 @@
                                 <td><?php echo $oferta->titulo; ?></td>
                                 <td><?php echo $oferta->descripcion; ?></td>
                                 <td><?php echo $oferta->fecha; ?></td>
-                                <td><a href="<?php echo base_url(); ?>internal_private/editar_oferta/<?php echo $oferta->id_oferta; ?>"  class="btn btn-warning" role="button">Editar</a></td>
-                                <td><a href="<?php echo base_url(); ?>internal_private/delete_oferta/<?php echo $oferta->id_oferta; ?>" class="btn btn-danger" role="button">Eliminar</a></td>
+                                <td><a href="<?php echo base_url(); ?>internal_empresa/editar_oferta/<?php echo $oferta->id_oferta; ?>"  class="btn btn-warning" role="button">Editar</a></td>
+                                <td><a href="<?php echo base_url(); ?>internal_empresa/delete_oferta/<?php echo $oferta->id_oferta; ?>" class="btn btn-danger" role="button">Eliminar</a></td>
                             </tr>
                             <?php } }else{ ?>
                             <tr>

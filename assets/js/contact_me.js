@@ -34,6 +34,8 @@ $(function () {
                     if (data["resultado"] === 'TRUE') {
                         if(data["tipo"] === 'Admin'){
                             window.location.href="http://localhost/bolsa-trabajo/internal_private/index";
+                        }else if(data["tipo"] === 'Empresa'){
+                            window.location.href="http://localhost/bolsa-trabajo/internal_empresa/index";
                         }else{
                             window.location.href="http://localhost/bolsa-trabajo/";
                         }

@@ -10,6 +10,7 @@ class internal_private extends CI_Controller {
         $this->load->model("user_model");
         $this->load->model("ofertas_model");
         $this->load->model("postulaciones_model");
+        $this->load->model("empresas_model");
     }
 
     public function index() {
@@ -57,66 +58,121 @@ class internal_private extends CI_Controller {
                 </script>;';
         }
     }
+    
+    public function reset_pass_user(){
+        $id = $this->uri->segment(3);
+        $data = array(
+            'content' => "private/reset_usuario",
+            'title' => "ITSCO | Usuario.",
+            'barraTitulo' => "Resetear Contraseña de Usuario",
+            'resultado' => $this->user_model->get_user_by_id($id)
+        );
+        $this->load->view('private/template', $data);
+    }
+
+    public function reset_usuario(){
+        $id = $this->uri->segment(3);
+        $data = array(
+            'pass' => md5($this->input->post('pass'))
+        );
+        $this->user_model->update_user($id, $data);
+        redirect('internal_private/usuarios');
+    }
 
     public function delete_usuario() {
         $id = $this->uri->segment(3);
         $this->user_model->delete_user($id);
         redirect('internal_private/usuarios');
     }
-
-    public function ofertas() {
+    
+    public function empresas(){
         $data = array(
-            'content' => "private/ofertas",
-            'title' => "ITSCO | Ofertas.",
-            'barraTitulo' => "Gestión de Ofertas de Empleo",
-            'resultado' => $this->ofertas_model->get_all_ofertas()
+            'content' => "private/empresas",
+            'title' => "ITSCO | Empresas.",
+            'barraTitulo' => "Gestión de Empresas",
+            'resultado' => $this->empresas_model->get_all_empresas()
+        );
+        $this->load->view('private/template', $data);
+    }
+    
+    public function agregar_empresa(){
+        $data = array(
+            'content' => "private/agregar_empresa",
+            'title' => "ITSCO | Agregar Empresa.",
+            'barraTitulo' => "Agregar Empresa"
+        );
+        $this->load->view('private/template', $data);
+    }
+    
+    public function save_empresa() {
+        $data = array(
+            'nombre' => $this->input->post('nombre'),
+            'direccion' => $this->input->post('direccion'),
+            'telefono' => $this->input->post('telefono'),
+            'correo' => $this->input->post('correo'),
+            'usuario' => $this->input->post('usuario'),
+            'pass' => md5($this->input->post('pass'))
+        );
+        $existUser = $this->empresas_model->check_user($data["usuario"]);
+        if($existUser == 0){
+            $this->empresas_model->insert_empresa($data);
+            redirect('internal_private/empresas');
+        }else{
+            echo'<script languaje = "javaScript">
+                    alert ("El usuario '.$data["user"].' ya existe registrado!");
+                    location.href="internal_private/agregar_empresa";
+                </script>;';
+        }
+    }
+    
+    public function editar_empresa(){
+        $id = $this->uri->segment(3);
+        $data = array(
+            'content' => "private/editar_empresa",
+            'title' => "ITSCO | Empresas.",
+            'barraTitulo' => "Editar Empresa",
+            'resultado' => $this->empresas_model->get_empresa_by_id($id)
+        );
+        $this->load->view('private/template', $data);
+    }
+    
+    public function edit_empresa(){
+        $id = $this->uri->segment(3);
+        $data = array(
+            'nombre' => $this->input->post('nombre'),
+            'direccion' => $this->input->post('direccion'),
+            'telefono' => $this->input->post('telefono'),
+            'correo' => $this->input->post('correo'),
+            'usuario' => $this->input->post('usuario')
+        );
+        $this->empresas_model->update_empresa($id, $data);
+        redirect('internal_private/empresas');
+    }
+    
+    public function reset_pass_empresa(){
+        $id = $this->uri->segment(3);
+        $data = array(
+            'content' => "private/reset_empresa",
+            'title' => "ITSCO | Empresas.",
+            'barraTitulo' => "Resetear Contraseña de Empresa",
+            'resultado' => $this->empresas_model->get_empresa_by_id($id)
         );
         $this->load->view('private/template', $data);
     }
 
-    public function agregar_oferta() {
-        $data = array(
-            'content' => "private/agregar_oferta",
-            'title' => "ITSCO | Agregar Oferta.",
-            'barraTitulo' => "Agregar Oferta de Empleo"
-        );
-        $this->load->view('private/template', $data);
-    }
-
-    public function save_oferta() {
-        $data = array(
-            'titulo' => $this->input->post('titulo'),
-            'descripcion' => $this->input->post('descripcion')
-        );
-        $this->ofertas_model->insert_oferta($data);
-        redirect('internal_private/ofertas');
-    }
-
-    public function editar_oferta() {
+    public function reset_empresa(){
         $id = $this->uri->segment(3);
         $data = array(
-            'content' => "private/editar_oferta",
-            'title' => "ITSCO | Editar Oferta.",
-            'barraTitulo' => "Editar Oferta de Empleo",
-            'resultado' => $this->ofertas_model->get_oferta_by_id($id)
+            'pass' => md5($this->input->post('pass'))
         );
-        $this->load->view('private/template', $data);
+        $this->empresas_model->update_empresa($id, $data);
+        redirect('internal_private/empresas');
     }
-
-    public function edit_oferta() {
+    
+    public function eliminar_empresa() {
         $id = $this->uri->segment(3);
-        $data = array(
-            'titulo' => $this->input->post('titulo'),
-            'descripcion' => $this->input->post('descripcion')
-        );
-        $this->ofertas_model->update_oferta($id, $data);
-        redirect('internal_private/editar_oferta/' . $id . '');
-    }
-
-    public function delete_oferta() {
-        $id = $this->uri->segment(3);
-        $this->ofertas_model->delete_oferta($id);
-        redirect('internal_private/ofertas');
+        $this->empresas_model->delete_empresa($id);
+        redirect('internal_private/empresas');
     }
 
     public function postulaciones() {

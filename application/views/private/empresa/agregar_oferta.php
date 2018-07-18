@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-8">
-    <form id="miformulario1" action="<?php echo base_url(); ?>internal_private/save_oferta" method="post">
+    <form id="miformulario1" action="<?php echo base_url(); ?>internal_empresa/save_oferta" method="post">
         <div class="form-group">
             <label for="titulo">Titulo de la Oferta: </label><br>
             <input type="text" class="form-control" id="titulo" maxlength="100" name="titulo" required="" placeholder="Ingresa el titulo de la oferta">

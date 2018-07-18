@@ -1,4 +1,4 @@
-<?php if ($this->session->userdata('logueado') == TRUE and $this->session->userdata('tipo_login') === "Admin") {
+<?php if ($this->session->userdata('logueado') == TRUE and $this->session->userdata('tipo_login') === "Empresa") {
     # code...
 ?>
 <!DOCTYPE html>
@@ -56,7 +56,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo base_url(); ?>internal_private/">Sistema para Bolsa de Trabajo</a>
+                <a class="navbar-brand" href="<?php echo base_url(); ?>internal_empresa/">Sistema para Bolsa de Trabajo</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -80,19 +80,16 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="<?php echo base_url(); ?>internal_private/"><i class="fa fa-dashboard fa-fw"></i> Administrador</a>
+                            <a href="<?php echo base_url(); ?>internal_empresa/"><i class="fa fa-dashboard fa-fw"></i> Administrador</a>
                         </li>
                         <li>
-                            <a href="<?php echo base_url(); ?>internal_private/usuarios"><i class="fa fa-edit fa-fw"></i> Usuarios</a>
+                            <a href="<?php echo base_url(); ?>internal_empresa/informacion"><i class="fa fa-edit fa-fw"></i> Información</a>
                         </li>
                         <li>
-                            <a href="<?php echo base_url(); ?>internal_private/alumnos"><i class="fa fa-table fa-fw"></i> Alumnos</a>
+                            <a href="<?php echo base_url(); ?>internal_empresa/ofertas"><i class="fa fa-table fa-fw"></i> Ofertas de Empleo</a>
                         </li>
                         <li>
-                            <a href="<?php echo base_url(); ?>internal_private/empresas"><i class="fa fa-desktop fa-fw"></i> Empresas</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo base_url(); ?>internal_private/postulaciones"><i class="fa fa-edit fa-fw"></i> Postulaciones</a>
+                            <a href="<?php echo base_url(); ?>internal_empresa/reporte"><i class="fa fa-edit fa-fw"></i> Reporte</a>
                         </li>
                     </ul>
                 </div>

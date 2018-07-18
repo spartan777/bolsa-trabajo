@@ -4,7 +4,7 @@
             foreach ($resultado->result() as $oferta) {
                 ?>
 
-                <form id="miformulario1" action="<?php echo base_url(); ?>internal_private/edit_oferta/<?php echo $oferta->id_oferta; ?>" method="post">
+                <form id="miformulario1" action="<?php echo base_url(); ?>internal_empresa/edit_oferta/<?php echo $oferta->id_oferta; ?>" method="post">
                     <div class="form-group">
                         <label for="id">ID de la Oferta: </label><br>
                         <input type="text" class="form-control" id="id"  value="<?php echo $oferta->id_oferta; ?>" readonly="">
