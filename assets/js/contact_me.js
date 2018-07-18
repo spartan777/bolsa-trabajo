@@ -31,7 +31,6 @@ $(function () {
                 dataType: 'json',
                 cache: false,
                 success: function (data) {
-
                     if (data["resultado"] === 'TRUE') {
                         if(data["tipo"] === 'Admin'){
                             window.location.href="http://localhost/bolsa-trabajo/internal_private/index";
@@ -47,8 +46,6 @@ $(function () {
                         //clear all fields
                         $('#contactForm').trigger("reset");
                     }
-
-
                 },
                 error: function () {
                     // Fail message

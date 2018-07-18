@@ -10,7 +10,9 @@
         <p class="post-meta">
             <strong>Descripción:</strong> <?php echo $oferta->descripcion; ?><br>
             <strong>Fecha publicación:</strong> <?php echo $oferta->fecha; ?><br>
+            <?php if ($this->session->userdata('logueado') == TRUE and $this->session->userdata('tipo_login') === "Alumno") { ?>
             <a href="<?php echo base_url(); ?>welcome/save_postulacion/<?php echo $oferta->id_oferta; ?>" class="btn btn-info" role="button">Postularme</a>
+            <?php } ?>
         </p>
     </div>
     <hr>

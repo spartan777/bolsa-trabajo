@@ -46,8 +46,16 @@ class internal_private extends CI_Controller {
             'pass' => md5($this->input->post('pass')),
             'tipo' => "Admin"
         );
-        $this->user_model->insert_user($data);
-        redirect('internal_private/usuarios');
+        $existUser = $this->user_model->check_user($data["user"]);
+        if($existUser == 0){
+            $this->user_model->insert_user($data);
+            redirect('internal_private/usuarios');
+        }else{
+            echo'<script languaje = "javaScript">
+                    alert ("El usuario '.$data["user"].' ya existe registrado!");
+                    location.href="internal_private/agregar_usuario";
+                </script>;';
+        }
     }
 
     public function delete_usuario() {

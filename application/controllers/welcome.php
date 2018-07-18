@@ -82,7 +82,7 @@ class Welcome extends CI_Controller {
         }else{
             $response['resultado'] = 'FALSE';
         }
-
+       
         echo json_encode($response);
     }
     
@@ -131,8 +131,16 @@ class Welcome extends CI_Controller {
             'pass' => md5($this->input->post('pass')),
             'tipo' => "Alumno"
         );
-        $this->user_model->insert_user($data);
-        redirect('welcome/iniciar_sesion');
+        $existUser = $this->user_model->check_user($data["user"]);
+        if($existUser == 0){
+            $this->user_model->insert_user($data);
+            redirect('welcome/iniciar_sesion');
+        }else{
+            echo'<script languaje = "javaScript">
+                    alert ("El usuario '.$data["user"].' ya existe registrado!");
+                    location.href="welcome/registro";
+                </script>;';
+        }
     }
 
 }

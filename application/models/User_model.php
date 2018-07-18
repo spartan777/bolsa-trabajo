@@ -4,6 +4,12 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 class User_model extends CI_Model{
+    public function check_user($user){
+        $this->db->where('user', $user);
+        $query = $this->db->get('user');
+        return $query->num_rows();
+    }
+
     public function check_password($user, $pass, $type){
         $this->db->where('user', $user);
         $this->db->where('pass', $pass);

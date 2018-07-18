@@ -12,7 +12,7 @@
                 <div class="control-group">
                     <div class="form-group floating-label-form-group controls">
                         <label>Contraseña</label>
-                        <input type="password" class="form-control" name="passs" placeholder="Contraseña" id="email" required >
+                        <input type="password" class="form-control" name="pass" placeholder="Contraseña" id="email" required >
                         <p class="help-block text-danger"></p>
                     </div>
                 </div>
