@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/xampp/htdocs/bolsa-trabajo/application/views/public/welcome_message.php</file>
+            <file>file:/C:/xampp/htdocs/bolsa-trabajo/application/views/public/login.php</file>
+            <file>file:/C:/xampp/htdocs/bolsa-trabajo/application/libraries/Excel.php</file>
+            <file>file:/C:/xampp/htdocs/bolsa-trabajo/assets/js/contact_me.js</file>
+            <file>file:/C:/xampp/htdocs/bolsa-trabajo/application/controllers/welcome.php</file>
+            <file>file:/C:/xampp/htdocs/bolsa-trabajo/application/models/Postulaciones_model.php</file>
+            <file>file:/C:/xampp/htdocs/bolsa-trabajo/application/views/public/registro.php</file>
+            <file>file:/C:/xampp/htdocs/bolsa-trabajo/application/views/private/usuarios.php</file>
+            <file>file:/C:/xampp/htdocs/bolsa-trabajo/application/views/private/template.php</file>
+            <file>file:/C:/xampp/htdocs/bolsa-trabajo/application/controllers/internal_private.php</file>
+            <file>file:/C:/xampp/htdocs/bolsa-trabajo/application/views/private/index.php</file>
+        </group>
+    </open-files>
+</project-private>
