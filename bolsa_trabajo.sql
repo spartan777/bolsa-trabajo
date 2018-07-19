@@ -44,11 +44,6 @@ CREATE TABLE `alumnos` (
 --
 
 INSERT INTO `alumnos` (`no_control`, `nombre`, `paterno`, `materno`, `habilidades`, `diplomados_cursos`, `id_carrera`, `telefono`, `edad`, `correo`, `pass`, `imagen`) VALUES
-('115Q0253', 'Javier', 'Castro', 'Lagunes', 'Programación', 'Java 8', 2, '2147483647', 25, 'alumno@alumno.com', 'c6865cf98b133f1f3de596a4a2894630', '115Q0253.png'),
-('115Q0254', 'Javier', 'Castro', 'Lagunes', 'Programación', 'Java 8', 2, '2147483647', 25, 'alumno@alumno.com', 'c6865cf98b133f1f3de596a4a2894630', 'momo2.png'),
-('115Q0255', 'Javier', 'Castro', 'Lagunes', 'Programación', 'Java 8', 2, '2881133768', 25, 'alumno@alumno.com', 'c6865cf98b133f1f3de596a4a2894630', '115Q0255.png'),
-('115Q0256', 'Javier', 'Castro', 'Lagunes', 'Programación', 'Java 8', 1, '2881133768', 28, 'alumno@alumno.com', 'c6865cf98b133f1f3de596a4a2894630', '115Q0256.png'),
-('115Q0257', 'Javier', 'Castro', 'Lagunes', 'Programación', 'Java 8', 2, '2881133768', 30, 'alumno@alumno.com', 'c6865cf98b133f1f3de596a4a2894630', '115Q0257.jpg'),
 ('115Q0258', 'Javier', 'Castro', 'Lagunes', 'Programación y cumplido', 'Java 8', 2, '2881293843', 21, 'alumno@alumno.com', 'f6b16b945f3a595d0f4d0b9270eb0cb5', '115Q0258.jpg');
 
 -- --------------------------------------------------------
