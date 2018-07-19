@@ -25,12 +25,18 @@ class Welcome extends CI_Controller {
     }
 
     public function ofertas() {
+        if($this->session->userdata('logueado') === TRUE){
+            $id = $this->session->userdata('id_user');
+            $ofertas = $this->ofertas_model->get_ofertas_by_carrera($id);
+        }else{
+            $ofertas = $this->ofertas_model->get_all_ofertas();
+        }
         $data = array(
             'content' => "public/ofertas",
             'title' => "ITSCO | Bolsa de trabajo.",
             'barraTitulo' => "Ofertas de empleo",
             'image' => "tec.png",
-            'ofertas' => $this->ofertas_model->get_all_ofertas()
+            'ofertas' => $ofertas
         );
         $this->load->view('public/welcome_message', $data);
     }
