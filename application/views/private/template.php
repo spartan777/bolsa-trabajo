@@ -92,6 +92,9 @@
                             <a href="<?php echo base_url(); ?>internal_private/empresas"><i class="fa fa-desktop fa-fw"></i> Empresas</a>
                         </li>
                         <li>
+                            <a href="<?php echo base_url(); ?>internal_private/ofertas"><i class="fa fa-archive fa-fw"></i> Ofertas</a>
+                        </li>
+                        <li>
                             <a href="<?php echo base_url(); ?>internal_private/postulaciones"><i class="fa fa-edit fa-fw"></i> Postulaciones</a>
                         </li>
                     </ul>

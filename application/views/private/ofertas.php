@@ -2,7 +2,7 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <a href="<?php echo base_url(); ?>internal_empresa/agregar_oferta" class="btn btn-info" role="button">Agregar</a>
+                <a <?php if($resultado != FALSE){ ?> href="<?php echo base_url(); ?>internal_private/generar_reporte_ofertas" <?php } ?> class="btn btn-info" role="button">Generar reporte</a>
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
@@ -15,8 +15,7 @@
                                 <th>Descripción</th>
                                 <th>Fecha</th>
                                 <th>Carrera</th>
-                                <th>Editar</th>
-                                <th>Eliminar</th>
+                                <th>Empresa</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -28,13 +27,11 @@
                                 <td><?php echo $oferta->descripcion; ?></td>
                                 <td><?php echo $oferta->fecha; ?></td>
                                 <td><?php echo $oferta->nombre_carrera; ?></td>
-                                <td><a href="<?php echo base_url(); ?>internal_empresa/editar_oferta/<?php echo $oferta->id_oferta; ?>"  class="btn btn-warning" role="button">Editar</a></td>
-                                <td><a href="<?php echo base_url(); ?>internal_empresa/delete_oferta/<?php echo $oferta->id_oferta; ?>" class="btn btn-danger" role="button">Eliminar</a></td>
+                                <td><?php echo $oferta->nombre_empresa; ?></td>
                             </tr>
                             <?php } }else{ ?>
                             <tr>
                                 <td>No hay resultados</td>
-                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>

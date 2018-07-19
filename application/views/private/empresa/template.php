@@ -89,7 +89,7 @@
                             <a href="<?php echo base_url(); ?>internal_empresa/ofertas"><i class="fa fa-table fa-fw"></i> Ofertas de Empleo</a>
                         </li>
                         <li>
-                            <a href="<?php echo base_url(); ?>internal_empresa/reporte"><i class="fa fa-edit fa-fw"></i> Reporte</a>
+                            <a href="<?php echo base_url(); ?>internal_empresa/postulaciones"><i class="fa fa-archive fa-fw"></i> Postulaciones</a>
                         </li>
                     </ul>
                 </div>

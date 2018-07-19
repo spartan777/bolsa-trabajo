@@ -10,6 +10,8 @@
                                 <th>Id Postulación</th>
                                 <th>Oferta</th>
                                 <th>Fecha</th>
+                                <th>Empresa</th>
+                                <th>Carrera de Oferta</th>
                                 <th>Eliminar</th>
                             </tr>
                         </thead>
@@ -20,11 +22,15 @@
                                 <td><?php echo $user->id_postulacion; ?></td>
                                 <td><?php echo $user->oferta; ?></td>
                                 <td><?php echo $user->fecha; ?></td>
+                                <td><?php echo $user->nombre_empresa; ?></td>
+                                <td><?php echo $user->nombre_carrera; ?></td>
                                 <td><a href="<?php echo base_url(); ?>welcome/delete_postulacion/<?php echo $user->id_postulacion; ?>" class="btn btn-danger" role="button">Eliminar</a></td>
                             </tr>
                             <?php } }else{ ?>
                             <tr>
                                 <td>No hay resultados</td>
+                                <td></td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>

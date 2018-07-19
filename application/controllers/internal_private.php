@@ -11,6 +11,7 @@ class internal_private extends CI_Controller {
         $this->load->model("ofertas_model");
         $this->load->model("postulaciones_model");
         $this->load->model("empresas_model");
+        $this->load->model("alumnos_model");
     }
 
     public function index() {
@@ -173,6 +174,46 @@ class internal_private extends CI_Controller {
         $id = $this->uri->segment(3);
         $this->empresas_model->delete_empresa($id);
         redirect('internal_private/empresas');
+    }
+    
+    public function ofertas(){
+        $data = array(
+            'content' => "private/ofertas",
+            'title' => "ITSCO | Ofertas.",
+            'barraTitulo' => "Gestión de Ofertas de Empleo",
+            'resultado' => $this->ofertas_model->get_all_ofertas()
+        );
+        $this->load->view('private/template', $data);
+    }
+
+    public function alumnos(){
+        $data = array(
+            'content' => "private/alumnos",
+            'title' => "ITSCO | Alumnos.",
+            'barraTitulo' => "Gestión de Alumnos",
+            'resultado' => $this->alumnos_model->get_alumnos()
+        );
+        $this->load->view('private/template', $data);
+    }
+    
+    public function reset_pass_alumno(){
+        $id = $this->uri->segment(3);
+        $data = array(
+            'content' => "private/reset_alumno",
+            'title' => "ITSCO | Alumnos.",
+            'barraTitulo' => "Resetear Contraseña de Alumno",
+            'resultado' => $this->alumnos_model->get_alumno_by_id($id)
+        );
+        $this->load->view('private/template', $data);
+    }
+    
+    public function reset_alumno(){
+        $id = $this->uri->segment(3);
+        $data = array(
+            'pass' => md5($this->input->post('pass'))
+        );
+        $this->alumnos_model->update_alumno($id, $data);
+        redirect('internal_private/alumnos');
     }
 
     public function postulaciones() {

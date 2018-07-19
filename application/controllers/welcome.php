@@ -77,6 +77,19 @@ class Welcome extends CI_Controller {
         );
         $this->load->view('public/welcome_message', $data);
     }
+    
+    public function editar_informacion(){
+        $id = $this->session->userdata('id_user');
+        $data = array(
+            'content' => "public/editar_informacion",
+            'title' => "ITSCO | Bolsa de trabajo.",
+            'barraTitulo' => "Editar Información",
+            'image' => "tec.png",
+            'resultados' => $this->alumnos_model->get_alumno_by_id($id),
+            'resultado' => $this->alumnos_model->get_carreras()
+        );
+        $this->load->view('public/welcome_message', $data);
+    }
 
     public function postulaciones(){
         $id = $this->session->userdata('id_user');
@@ -118,8 +131,72 @@ class Welcome extends CI_Controller {
         $this->load->view('public/welcome_message', $data);
     }
     
+    public function edit_usuario(){
+        $id = $this->session->userdata('id_user');
+        $datos = array(
+            'nombre' => $this->input->post('nombre'),
+            'paterno' => $this->input->post('paterno'),
+            'materno' => $this->input->post('materno'),
+            'habilidades' => $this->input->post('habilidades'),
+            'diplomados_cursos' => $this->input->post('diplomados_cursos'),
+            'id_carrera' => $this->input->post('id_carrera'),
+            'telefono' => $this->input->post('telefono'),
+            'edad' => $this->input->post('edad'),
+            'correo' => $this->input->post('correo')
+        );
+        $this->alumnos_model->update_alumno($id, $datos);
+        redirect('welcome/mi_informacion');
+    }
+    
+    public function editar_foto(){
+        $id = $this->session->userdata('id_user');
+        $data = array(
+            'content' => "public/edit_imagen",
+            'title' => "ITSCO | Bolsa de trabajo.",
+            'barraTitulo' => "Editar Imagen",
+            'image' => "tec.png",
+            'resultados' => $this->alumnos_model->get_alumno_by_id($id)
+        );
+        $this->load->view('public/welcome_message', $data);
+    }
+
+
+    public function save_image(){
+        $id = $this->session->userdata('id_user');
+        $config['upload_path'] = APPPATH.'/../img/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '2000';
+        $config['max_width'] = '2024';
+        $config['max_height'] = '2008';
+        $config['file_name'] = strtoupper($id);
+        $config['overwrite'] = TRUE;   
+        
+        $this->load->library('upload', $config);
+        if (!$this->upload->do_upload()) {
+            $data = array(
+                'content' => "public/edit_imagen",
+                'title' => "ITSCO | Bolsa de trabajo.",
+                'barraTitulo' => "Editar Imagen",
+                'image' => "tec.png",
+                'resultados' => $this->alumnos_model->get_alumno_by_id($id),
+                'error' => $this->upload->display_errors(),
+            );
+            $this->load->view('public/welcome_message', $data);
+        } else {
+            $file_info = $this->upload->data();
+            $data = array('upload_data' => $this->upload->data());
+            $imagen = $file_info['file_name'];
+            $datos = array(
+                'imagen' => $imagen
+            );
+            
+            $this->alumnos_model->update_alumno($id, $datos);
+            redirect('welcome/mi_informacion');            
+        }
+    }
+
     public function save_usuario(){
-        $config['upload_path'] = APPPATH.'/profile_pictures/';
+        $config['upload_path'] = APPPATH.'/../img/';
         $config['allowed_types'] = 'gif|jpg|png';
         $config['max_size'] = '2000';
         $config['max_width'] = '2024';
@@ -133,12 +210,12 @@ class Welcome extends CI_Controller {
                 'title' => "ITSCO | Bolsa de trabajo.",
                 'barraTitulo' => "Registrarse",
                 'image' => "tec.png",
-                'error' => $this->upload->display_errors()
+                'error' => $this->upload->display_errors(),
+                'resultado' => $this->alumnos_model->get_carreras()
             );
             $this->load->view('public/welcome_message', $data);
         } else {
             $file_info = $this->upload->data();
-            $this->_create_thumbnail($file_info['file_name']);
             $data = array('upload_data' => $this->upload->data());
             $imagen = $file_info['file_name'];
             $datos = array(
@@ -165,25 +242,14 @@ class Welcome extends CI_Controller {
                     'title' => "ITSCO | Bolsa de trabajo.",
                     'barraTitulo' => "Registrarse",
                     'image' => "tec.png",
-                    'error' => 'El usuario '.$datos["no_control"].' ya existe registrado!'
+                    'error' => 'El usuario '.$datos["no_control"].' ya existe registrado!',
+                    'resultado' => $this->alumnos_model->get_carreras()
                 );
                 $this->load->view('public/welcome_message', $dat);
             }
         }
     }
-    
-    function _create_thumbnail($filename){
-        $config['image_library'] = 'gd2';
-        $config['source_image'] = APPPATH.'/profile_pictures/'.$filename;
-        $config['create_thumb'] = TRUE;
-        $config['maintain_ratio'] = TRUE;
-        $config['new_image']= APPPATH.'/profile_pictures/thumbs/';
-        $config['width'] = 150;
-        $config['height'] = 150;
-        $this->load->library('image_lib', $config); 
-        $this->image_lib->resize();
-    }
-    
+        
     public function valida_formulario() {
         $user = $this->input->post('user');
         $pass = $this->input->post('pass');

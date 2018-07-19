@@ -6,8 +6,8 @@ if (!defined('BASEPATH'))
 class Ofertas_model extends CI_Model{
    
     public function get_all_ofertas(){
-        $this->db->order_by("fecha", "desc");
-        $query = $this->db->get('ofertas');
+        $consulta = "SELECT o.*, c.nombre AS nombre_carrera, e.nombre AS nombre_empresa FROM ofertas o, empresa e, carreras c WHERE o.id_empresa = e.id_empresa AND o.id_carrera = c.id_carrera ORDER by o.fecha desc";
+        $query = $this->db->query($consulta);
         if($query->num_rows > 0){
             return $query;
         }else{
@@ -15,6 +15,16 @@ class Ofertas_model extends CI_Model{
         }
     }
     
+    public function get_oferta_by_empresa($id){
+        $consulta = "SELECT o.*, c.nombre AS nombre_carrera FROM ofertas o, empresa e, carreras c WHERE o.id_empresa = e.id_empresa AND o.id_carrera = c.id_carrera AND o.id_empresa = $id ORDER by o.fecha desc";
+        $query = $this->db->query($consulta);
+        if($query->num_rows > 0){
+            return $query;
+        }else{
+            return FALSE;
+        }
+    }
+
     public function get_oferta_by_id($id){
         $this->db->where('id_oferta', $id);
         $query = $this->db->get('ofertas');

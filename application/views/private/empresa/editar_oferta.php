@@ -22,8 +22,22 @@
                         <input type="text" class="form-control" id="fecha"  value="<?php echo $oferta->fecha; ?>" readonly="">
                     </div>
                     <div class="form-group">
+                        <label>Carrera</label>
+                        <select class="form-control" name="id_carrera" >
+                            <option value="">Seleccione la carrera</option>
+                            <?php if ($resultados != FALSE) {
+                                foreach ($resultados->result() as $carrera) {
+                                    ?>
+                                    <option value="<?php echo $carrera->id_carrera; ?>" <?php if ($carrera->id_carrera === $oferta->id_carrera) {
+                                        echo 'selected';
+                                    } ?>><?php echo $carrera->nombre; ?></option>
+            <?php }
+        } ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <button type="submit" class="btn btn-primary">Gurdar</button>
-                        <a href="<?= base_url(); ?>internal_private/ofertas"><input type="button" class="btn btn-danger" value="Cancelar"></input></a>
+                        <a href="<?= base_url(); ?>internal_empresa/ofertas"><input type="button" class="btn btn-danger" value="Cancelar"></input></a>
                     </div>
     <?php }
 } ?>

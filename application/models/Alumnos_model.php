@@ -29,6 +29,16 @@ class Alumnos_model extends CI_Model {
         }
     }
     
+    public function get_alumnos(){
+        $consulta = "SELECT a.*, c.nombre as nombre_carrera FROM alumnos a, carreras c WHERE a.id_carrera = c.id_carrera";
+        $query = $this->db->query($consulta);
+        if($query->num_rows > 0){
+            return $query;
+        }else{
+            return FALSE;
+        }
+    }
+
     public function get_alumno_by_id($id){
         $this->db->where('no_control', $id);
         $query = $this->db->get('alumnos');
